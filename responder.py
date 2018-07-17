@@ -55,7 +55,6 @@ def login():
     return client
 
 def run(client):
-    saved = []
     print('running ...')
     for comment in client.subreddit(SUBREDDIT).comments(limit=None):
         if comment.saved or comment.author == client.user.me():
