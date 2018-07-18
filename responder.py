@@ -6,6 +6,9 @@ import praw
 URL = "https://api.overwatchleague.com/stats/players"
 STATS = requests.get(URL).json()['data']
 
+SUBREDDIT = 'competitiveoverwatch'
+COMMAND = re.compile('!stats (.*)', re.IGNORECASE)
+
 TEAMS = {
     'BOS': 'Boston Uprising',
     'GLA': 'Los Angeles Gladiators',
@@ -21,8 +24,11 @@ TEAMS = {
     'SEO': 'Seoul Dynasty'
 }
 
-SUBREDDIT = 'competitiveoverwatch'
-COMMAND = re.compile('!stats (.*)', re.IGNORECASE)
+PLAYERS = {
+    'sbb': 'Saebyeolbe',
+    'sdb': 'ShaDowBurn',
+    'zebbo': 'Zebbosai'
+}
 
 RESPONSE = (
     "# Statistics for {}\n\n"
@@ -50,7 +56,7 @@ def login():
         password      = os.environ.get('REDDIT_PASS'),
         client_id     = os.environ.get('CLIENT_ID'),
         client_secret = os.environ.get('CLIENT_SECRET'),
-        user_agent    = 'FantanoBot responder'
+        user_agent    = 'OWL-StatsBot responder'
     )
     return client
 
@@ -67,6 +73,7 @@ def run(client):
         print('found comment: https://reddit.com' + comment.permalink)
         print('term:', bot_call.group(1))
         term = bot_call.group(1).strip()
+        term = PLAYERS.get(term.lower(), term)
         reply = None
 
         for player in STATS:
@@ -90,6 +97,8 @@ def run(client):
             comment.reply(reply)
             comment.save()
             print('replied')
+        else:
+            print('failed')
 
 
 client = login()
