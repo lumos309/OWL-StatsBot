@@ -27,7 +27,8 @@ TEAMS = {
 PLAYERS = {
     'sbb': 'Saebyeolbe',
     'sdb': 'ShaDowBurn',
-    'zebbo': 'Zebbosai'
+    'zebbo': 'Zebbosai',
+    'rjh': 'ryujehong'
 }
 
 RESPONSE = (
