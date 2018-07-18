@@ -2,34 +2,13 @@ import requests
 import os
 import re
 import praw
+from substitutions import TEAMS, PLAYERS
 
 URL = "https://api.overwatchleague.com/stats/players?stage_id=regular_season"
 STATS = requests.get(URL).json()['data']
 
 SUBREDDIT = 'competitiveoverwatch'
 COMMAND = re.compile('!stats (.*)', re.IGNORECASE)
-
-TEAMS = {
-    'BOS': 'Boston Uprising',
-    'GLA': 'Los Angeles Gladiators',
-    'HOU': 'Houston Outlaws',
-    'SFS': 'San Fransisco Shock',
-    'LDN': 'London Spitfire',
-    'SHD': 'Shanghai Dragons',
-    'NYE': 'New York Excelsior',
-    'PHI': 'Philadelphia Fusion',
-    'DAL': 'Dallas Fuel',
-    'VAL': 'Los Angeles Valient',
-    'FLA': 'Florida Mayhem',
-    'SEO': 'Seoul Dynasty'
-}
-
-PLAYERS = {
-    'sbb': 'Saebyeolbe',
-    'sdb': 'ShaDowBurn',
-    'zebbo': 'Zebbosai',
-    'rjh': 'ryujehong'
-}
 
 RESPONSE = (
     "# Statistics for {}\n\n"
