@@ -6,7 +6,7 @@ This is a basic reddit bot that provides users with player statistics from the O
 
 `!stats [Player Name]` will provide stats for that player (e.g. `!stats Gesture`).
 
-All statistics sourced from [here](https://api.overwatchleague.com/stats/players).
+All statistics sourced from [here](https://api.overwatchleague.com/stats/players?stage_id=regular_season).
 
 ## Requirements
 

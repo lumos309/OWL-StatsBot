@@ -3,7 +3,7 @@ import os
 import re
 import praw
 
-URL = "https://api.overwatchleague.com/stats/players"
+URL = "https://api.overwatchleague.com/stats/players?stage_id=regular_season"
 STATS = requests.get(URL).json()['data']
 
 SUBREDDIT = 'competitiveoverwatch'
@@ -40,7 +40,7 @@ RESPONSE = (
     "| Average healing per 10min          | {:.2f} |\n"
     "| Average ultimates earned per 10min | {:.2f} |\n"
     "| Average final blows per 10min      | {:.2f} |\n"
-    "| Time Played Total (minutes)        | {:.2f} |"
+    "| Total Time Played (hours)          | {:.2f} |"
 )
 FOOTER = (
     "\n\nAll stats sourced from [here]({link}).\n\n"
@@ -88,7 +88,7 @@ def run(client):
                     player['healing_avg_per_10m'],
                     player['ultimates_earned_avg_per_10m'],
                     player['final_blows_avg_per_10m'],
-                    player['time_played_total']
+                    player['time_played_total'] / 60 / 60
                 ) + FOOTER
                 break
         
