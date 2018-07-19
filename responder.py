@@ -6,7 +6,7 @@ from constants import URL, PLAYER_RESPONSE, COMPARISON_RESPONSE, FOOTER, TEAMS, 
 
 STATS = requests.get(URL).json()['data']
 
-SUBREDDIT = 'test'
+SUBREDDIT = 'competitiveoverwatch'
 COMMAND = re.compile('!stats (.*)', re.IGNORECASE)
 
 def player_stats(p):
@@ -84,7 +84,6 @@ def run(client):
         reply = player_stats(terms[0]) if len(terms) == 1 else player_comparison(terms[0], terms[1])
 
         if reply is not None:
-            print(reply)
             comment.reply(reply)
             comment.save()
             print('replied')
