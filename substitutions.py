@@ -8,7 +8,7 @@ TEAMS = {
     'NYE': 'New York Excelsior',
     'PHI': 'Philadelphia Fusion',
     'DAL': 'Dallas Fuel',
-    'VAL': 'Los Angeles Valient',
+    'VAL': 'Los Angeles Valiant',
     'FLA': 'Florida Mayhem',
     'SEO': 'Seoul Dynasty'
 }
