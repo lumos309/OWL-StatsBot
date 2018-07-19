@@ -119,7 +119,7 @@ def run(client):
                 terms.remove(term)
         # retrieve stats for stage if not already loaded
         if STAGE_STATS[stage - 1] == '':
-            STAGE_URL = URL[:-14] + 'stage' + str(stage)
+            STAGE_URL = URL[:-14] + 'stage_' + str(stage)
             STAGE_STATS[stage - 1] = requests.get(STAGE_URL).json()['data']
     
         reply = player_stats(terms[0], stage) if len(terms) == 1 else player_comparison(terms[0], terms[1], stage)
