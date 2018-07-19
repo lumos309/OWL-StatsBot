@@ -79,7 +79,7 @@ def run(client):
             continue
 
         print('found comment: https://reddit.com' + comment.permalink)
-        print('term:', bot_call.group(1))
+        print('command:', bot_call.group(0))
         terms = bot_call.group(1).strip().split(' ')
         reply = player_stats(terms[0]) if len(terms) == 1 else player_comparison(terms[0], terms[1])
 
